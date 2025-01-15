@@ -1,19 +1,44 @@
 .btn {
-  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 16px;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
-
-  display: inline-flex;
-  gap: 8px;
+  height: 52px;
 
   background-color: var(--blue-dark);
   color: var(--gray-100);
   font-size: var(--font-size-small);
   font-weight: bold;
-  line-height: 140%;
+  line-height: 52px;
 
   &:hover {
     background-color: var(--blue);
+  }
+
+  svg {
+    height: 16px;
+  }
+}
+
+.btn-icon {
+  color: var(--gray-300);
+  background-color: transparent;
+
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+
+  svg {
+    height: 14px;
+  }
+
+  &:hover {
+    color: var(--danger);
+    background-color: var(--gray-400);
   }
 }

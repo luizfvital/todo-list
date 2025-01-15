@@ -1,10 +1,18 @@
 import styles from "./button.module.css";
-import PlusIcon from "../Icons/PlusIcon";
 
-function Button() {
+interface ButtonProps {
+  variant?: "default" | "icon";
+  children?: React.ReactNode;
+}
+
+function Button({ children, variant = "default" }: ButtonProps) {
   return (
-    <button className={styles.btn}>
-      Criar <PlusIcon />
+    <button
+      className={`${styles.btn} ${
+        variant === "icon" ? styles["btn-icon"] : ""
+      }`}
+    >
+      {children}
     </button>
   );
 }
