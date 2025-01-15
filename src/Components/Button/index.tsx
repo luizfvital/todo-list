@@ -1,7 +1,12 @@
+import styles from "./button.module.css";
+import PlusIcon from "../Icons/PlusIcon";
+
 function Button() {
-    return (
-        <button>button</button>
-    ) 
+  return (
+    <button className={styles.btn}>
+      Criar <PlusIcon />
+    </button>
+  );
 }
 
-export {Button}
+export { Button };

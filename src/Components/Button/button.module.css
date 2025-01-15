@@ -1,0 +1,19 @@
+.btn {
+  all: unset;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  display: inline-flex;
+  gap: 8px;
+
+  background-color: var(--blue-dark);
+  color: var(--gray-100);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  line-height: 140%;
+
+  &:hover {
+    background-color: var(--blue);
+  }
+}
