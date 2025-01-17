@@ -1,4 +1,5 @@
 import { Button } from "./Components/Button";
+import { Checkbox } from "./Components/Checkbox";
 import PlusIcon from "./Components/Icons/PlusIcon";
 import TrashIcon from "./Components/Icons/TrashIcon";
 
@@ -22,6 +23,7 @@ function App() {
         <Button variant="icon">
           <TrashIcon />
         </Button>
+        <Checkbox />
       </div>
     </>
   );
