@@ -5,7 +5,7 @@ interface ButtonProps {
   children?: React.ReactNode;
 }
 
-function Button({ children, variant = "default" }: ButtonProps) {
+export function Button({ children, variant = "default" }: ButtonProps) {
   return (
     <button
       className={`${styles.btn} ${
@@ -16,5 +16,3 @@ function Button({ children, variant = "default" }: ButtonProps) {
     </button>
   );
 }
-
-export { Button };
