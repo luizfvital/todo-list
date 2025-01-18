@@ -1,8 +1,5 @@
-import { Button } from "./Components/Button";
-import { Checkbox } from "./Components/Checkbox";
-import PlusIcon from "./Components/Icons/PlusIcon";
-import TrashIcon from "./Components/Icons/TrashIcon";
 import { Input } from "./Components/Input";
+import { Task } from "./Components/Task";
 
 function App() {
   return (
@@ -18,14 +15,13 @@ function App() {
           gap: 16,
         }}
       >
-        <Button>
-          Criar <PlusIcon />
-        </Button>
-        <Button variant="icon">
-          <TrashIcon />
-        </Button>
-        <Checkbox />
         <Input />
+        <Task
+          content="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+          complete={true}
+          onDelete={() => {}}
+          onSetIsComplete={() => {}}
+        />
       </div>
     </>
   );
