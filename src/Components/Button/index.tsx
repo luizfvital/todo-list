@@ -1,4 +1,4 @@
-import styles from "./button.module.css";
+import styles from "./index.module.css";
 
 interface ButtonProps {
   variant?: "default" | "icon";
