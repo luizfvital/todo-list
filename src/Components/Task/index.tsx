@@ -4,33 +4,40 @@ import TrashIcon from "../Icons/TrashIcon";
 import styles from "./index.module.css";
 
 interface TaskProps {
+  id: string;
   content: string;
   complete?: boolean;
-  onSetIsComplete: () => void;
-  onDelete: () => void;
+  onSetIsComplete: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 export function Task({
+  id,
   content,
   complete,
   onSetIsComplete,
   onDelete,
 }: TaskProps) {
-  const handleOnDelete = () => {
-    onDelete();
+  const handleOnDelete = (id: string) => {
+    onDelete(id);
   };
 
-  const handleOnSetIsComplete = () => {
-    onSetIsComplete();
+  const handleOnSetIsComplete = (id: string) => {
+    onSetIsComplete(id);
   };
 
   return (
     <div
       className={`${styles.task} ${complete ? styles["task--complete"] : ""}`}
     >
-      <Checkbox />
-      {content}
-      <Button variant="icon">
+      <div>
+        <Checkbox
+          onChange={() => handleOnSetIsComplete(id)}
+          checked={complete}
+        />
+        {content}
+      </div>
+      <Button variant="icon" onClick={() => handleOnDelete(id)}>
         <TrashIcon />
       </Button>
     </div>
