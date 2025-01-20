@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Input } from "./Components/Input";
 import { Task } from "./Components/Task";
 
+import logo from "./assets/logo.png";
+import { Button } from "./Components/Button";
+import PlusIcon from "./Components/Icons/PlusIcon";
+
 function App() {
   const [tasks, setTasks] = useState([
     {
@@ -27,34 +31,62 @@ function App() {
     );
   };
 
+  const handleOnDelete = (id: string) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
-    <>
-      <h1 style={{ color: "#f2f2f2", textAlign: "center", marginBottom: 32 }}>
-        Todo List
-      </h1>
-      <Input />
-      <div
+    <div style={{ height: "100vh" }}>
+      <header
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 16,
-          marginTop: 16,
+          height: 200,
+          backgroundColor: "var(--gray-700",
+          display: "grid",
+          placeItems: "center",
         }}
       >
-        {tasks.map(({ id, content, isComplete }) => (
-          <Task
-            id={id}
-            key={id}
-            content={content}
-            complete={isComplete}
-            onDelete={(id) => console.log("delete clicked: ", id)}
-            onSetIsComplete={handleOnSetIsComplete}
-          />
-        ))}
-      </div>
-    </>
+        <img width={126} src={logo} alt="Logo" />
+      </header>
+      <main
+        style={{
+          maxWidth: 736,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          margin: "-27px auto 0",
+          padding: "0 8px",
+        }}
+      >
+        <div style={{ display: "flex", gap: 8, width: "100%" }}>
+          <Input placeholder="Adicione uma nova tarefa" />
+          <Button>
+            Criar <PlusIcon />
+          </Button>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 16,
+            marginTop: 16,
+            width: "100%",
+          }}
+        >
+          {tasks.map(({ id, content, isComplete }) => (
+            <Task
+              id={id}
+              key={id}
+              content={content}
+              complete={isComplete}
+              onDelete={handleOnDelete}
+              onSetIsComplete={handleOnSetIsComplete}
+            />
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }
 

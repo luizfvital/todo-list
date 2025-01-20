@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 
-export function Input() {
-  return (
-    <input type="text" placeholder="Add new task" className={styles.input} />
-  );
+interface InputProps extends React.InputHTMLAttributes<HTMLElement> {}
+
+export function Input(props: InputProps) {
+  return <input type="text" className={styles.input} {...props} />;
 }

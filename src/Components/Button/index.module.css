@@ -21,6 +21,8 @@
 
   svg {
     height: 16px;
+    width: 16px;
+    max-width: unset;
   }
 }
 
@@ -35,6 +37,8 @@
 
   svg {
     height: 14px;
+    width: 14px;
+    max-width: unset;
   }
 
   &:hover {
