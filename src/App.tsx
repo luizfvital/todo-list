@@ -74,6 +74,11 @@ function App() {
           </Button>
         </div>
 
+        <div className={styles["app__status-container"]}>
+          <div>Tarefas criadas</div>
+          <div>Concluídas</div>
+        </div>
+
         <div className={styles["app__tasks-container"]}>
           {tasks.map(({ id, content, isComplete }) => (
             <Task
