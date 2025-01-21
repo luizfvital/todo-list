@@ -1,0 +1,35 @@
+.app__container {
+  height: 100vh;
+
+  header {
+    height: 200px;
+    background-color: var(--gray-700);
+    display: grid;
+    place-items: center;
+  }
+
+  main {
+    max-width: 736px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: -27px auto 0;
+    padding: 0 8px;
+  }
+}
+
+.app__input-container {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.app__tasks-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  width: 100%;
+}
