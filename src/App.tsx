@@ -24,14 +24,25 @@ function App() {
     if (!tasks.length) {
       return;
     }
-    setTasks(
-      tasks.map((task) => {
-        return {
-          ...task,
-          isComplete: task.id === id && !task.isComplete,
-        };
-      })
-    );
+
+    const task = tasks.find((task) => task.id === id);
+
+    if (task) {
+      const newTask = {
+        ...task,
+        isComplete: task.isComplete ? false : true,
+      };
+
+      setTasks(
+        tasks.map((task) => {
+          if (task.id !== id) {
+            return task;
+          }
+
+          return newTask;
+        })
+      );
+    }
   };
 
   const handleOnDelete = (id: string) => {
@@ -75,8 +86,20 @@ function App() {
         </div>
 
         <div className={styles["app__status-container"]}>
-          <div>Tarefas criadas</div>
-          <div>Concluídas</div>
+          <div>
+            <span>Tarefas criadas</span>
+            <span>{tasks.length}</span>
+          </div>
+          <div>
+            <span>Concluídas</span>
+            <span>
+              {tasks.reduce(
+                (sum, current) => sum + (current.isComplete ? 1 : 0),
+                0
+              )}{" "}
+              de {tasks.length}
+            </span>
+          </div>
         </div>
 
         <div className={styles["app__tasks-container"]}>

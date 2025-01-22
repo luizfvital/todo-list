@@ -29,8 +29,25 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-
+  font-weight: bold;
   margin-top: 64px;
+
+  color: var(--purple);
+
+  > div:first-child {
+    color: var(--blue);
+  }
+
+  span:not(:first-child) {
+    color: var(--gray-200);
+    font-size: var(--fontt-size-smallest);
+    background-color: var(--gray-400);
+
+    border-radius: 999px;
+
+    padding: 2px 8px;
+    margin-left: 8px;
+  }
 }
 
 .app__tasks-container {
