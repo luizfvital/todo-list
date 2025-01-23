@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Input } from "./Components/Input";
 import { Task } from "./Components/Task";
 
@@ -8,6 +8,8 @@ import PlusIcon from "./Components/Icons/PlusIcon";
 import { nanoid } from "nanoid/non-secure";
 
 import styles from "./app.module.css";
+
+import clipboard from "./assets/clipboard.png";
 
 interface Tasks {
   id: string;
@@ -49,7 +51,8 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const handleCriarButtonOnClick = () => {
+  const handleCriarButtonOnClick = (e: React.FormEvent) => {
+    e.preventDefault();
     if (!inputValue) {
       return;
     }
@@ -66,13 +69,22 @@ function App() {
     setInputValue("");
   };
 
+  const tasksCompleted = useMemo(() => {
+    const completed = tasks.filter((task) => task.isComplete);
+    if (completed.length) {
+      return `${completed.length} de ${tasks.length}`;
+    }
+
+    return "0";
+  }, [tasks]);
+
   return (
     <div className={styles["app__container"]}>
       <header>
         <img width={126} src={logo} alt="Logo" />
       </header>
       <main>
-        <div className={styles["app__input-container"]}>
+        <form className={styles["app__input-container"]}>
           <Input
             placeholder="Adicione uma nova tarefa"
             value={inputValue}
@@ -83,7 +95,7 @@ function App() {
           <Button onClick={handleCriarButtonOnClick}>
             Criar <PlusIcon />
           </Button>
-        </div>
+        </form>
 
         <div className={styles["app__status-container"]}>
           <div>
@@ -92,28 +104,30 @@ function App() {
           </div>
           <div>
             <span>Concluídas</span>
-            <span>
-              {tasks.reduce(
-                (sum, current) => sum + (current.isComplete ? 1 : 0),
-                0
-              )}{" "}
-              de {tasks.length}
-            </span>
+            <span>{tasksCompleted}</span>
           </div>
         </div>
 
-        <div className={styles["app__tasks-container"]}>
-          {tasks.map(({ id, content, isComplete }) => (
-            <Task
-              id={id}
-              key={id}
-              content={content}
-              complete={isComplete}
-              onDelete={handleOnDelete}
-              onSetIsComplete={handleOnSetIsComplete}
-            />
-          ))}
-        </div>
+        {tasks.length ? (
+          <div className={styles["app__tasks-container"]}>
+            {tasks.map(({ id, content, isComplete }) => (
+              <Task
+                id={id}
+                key={id}
+                content={content}
+                complete={isComplete}
+                onDelete={handleOnDelete}
+                onSetIsComplete={handleOnSetIsComplete}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className={styles["app__no-tasks-container"]}>
+            <img width={56} height={56} src={clipboard} alt="Clipboard image" />
+            <strong>Você ainda não tem tarefas cadastradas</strong>
+            Crie tarefas e organize seus itens a fazer
+          </div>
+        )}
       </main>
     </div>
   );

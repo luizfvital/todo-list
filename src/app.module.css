@@ -42,6 +42,7 @@
     color: var(--gray-200);
     font-size: var(--fontt-size-smallest);
     background-color: var(--gray-400);
+    min-width: 52px;
 
     border-radius: 999px;
 
@@ -58,4 +59,25 @@
   gap: 16px;
   margin-top: 24px;
   width: 100%;
+}
+
+.app__no-tasks-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  width: 100%;
+  padding: 64px 24px;
+
+  font-size: var(--font-size-base);
+  color: var(--gray-300);
+
+  border-top: 1px solid var(--gray-400);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+
+  img {
+    margin-bottom: 16px;
+  }
 }
